@@ -1,12 +1,8 @@
 name: Publish Package to npm
 
 on:
-  release:
-    types: [published]
-  push:
-    branches:
-      - main
-
+  workflow_dispatch:
+    
 jobs:
   publish:
     runs-on: ubuntu-latest
