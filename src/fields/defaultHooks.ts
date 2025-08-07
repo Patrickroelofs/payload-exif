@@ -3,12 +3,12 @@ import { type CollectionConfig } from "payload";
 import { ExifParserFactory } from "ts-exif-parser";
 
 const defaultHooks: CollectionConfig['hooks'] = {
-  afterChange: [
-    ({ doc, req }) => {
+  beforeValidate: [
+    ({ data, req }) => {
       const image = req.file?.data
 
       if (!image) {
-        return doc;
+        return data;
       }
 
 
@@ -16,11 +16,11 @@ const defaultHooks: CollectionConfig['hooks'] = {
       const result = exifData.parse();
 
       if (!result || !result.tags) {
-        return doc;
+        return data;
       }
 
       return {
-        ...doc,
+        ...data,
         exif: {
           ...result.tags,
         }
