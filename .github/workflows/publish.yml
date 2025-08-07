@@ -29,14 +29,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run tests
-        run: pnpm test
+      # TODO: Re-enable tests when they exist
+      # - name: Run tests
+      #   run: pnpm test
 
       - name: Dry run publish
         run: pnpm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # TODO: Uncomment when ready to publish
       # - name: Publish to npm
       #   run: pnpm publish
       #   env:
