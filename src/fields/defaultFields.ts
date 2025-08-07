@@ -274,6 +274,7 @@ const defaultFields: Field[] = [
             }
           }
         ],
+        label: "EXIF",
       }
     ],
     label: "EXIF",
