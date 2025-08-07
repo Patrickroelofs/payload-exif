@@ -1,5 +1,6 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { devUser } from 'helpers/credentials.js'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -31,6 +32,10 @@ const buildConfigWithMemoryDB = async () => {
 
   return buildConfig({
     admin: {
+      autoLogin: {
+        email: devUser.email,
+        password: devUser.password,
+      },
       importMap: {
         baseDir: path.resolve(dirname),
       },
@@ -42,7 +47,15 @@ const buildConfigWithMemoryDB = async () => {
       },
       {
         slug: 'media',
-        fields: [],
+        access: {
+          read: () => true,
+        },
+        fields: [
+          {
+            name: 'alt',
+            type: 'text',
+          }
+        ],
         upload: {
           staticDir: path.resolve(dirname, 'media'),
         },
@@ -59,9 +72,7 @@ const buildConfigWithMemoryDB = async () => {
     },
     plugins: [
       payloadExif({
-        collections: {
-          posts: true,
-        },
+        collections: ['media']
       }),
     ],
     secret: process.env.PAYLOAD_SECRET || 'test-secret_key',

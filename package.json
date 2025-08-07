@@ -78,7 +78,8 @@
     "sort-package-json": "^2.10.0",
     "typescript": "5.7.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.2",
+    "ts-exif-parser": "^0.2.2"
   },
   "peerDependencies": {
     "payload": "^3.37.0"
@@ -115,6 +116,5 @@
       "unrs-resolver"
     ]
   },
-  "registry": "https://registry.npmjs.org/",
-  "dependencies": {}
+  "registry": "https://registry.npmjs.org/"
 }
