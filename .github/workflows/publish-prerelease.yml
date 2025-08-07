@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/1-add-workflows-for-issues-title
 
 jobs:
   release:
