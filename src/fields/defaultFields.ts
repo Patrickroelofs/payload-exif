@@ -84,13 +84,14 @@ const defaultFields: Field[] = [
               ...sharedTextAdminFields,
             }
           },
-          {
-            name: "GPSVersionID",
-            type: "text",
-            admin: {
-              ...sharedTextAdminFields,
-            }
-          },
+          // TODO: Add GPS field, as currently its parsed as an array
+          // {
+          //   name: "GPSVersionID",
+          //   type: "text",
+          //   admin: {
+          //     ...sharedTextAdminFields,
+          //   }
+          // },
           {
             name: "ExposureTime",
             type: "text",
