@@ -72,7 +72,8 @@ const buildConfigWithMemoryDB = async () => {
     },
     plugins: [
       payloadExif({
-        collections: ['media']
+        collections: ['media'],
+        logging: false,
       }),
     ],
     secret: process.env.PAYLOAD_SECRET || 'test-secret_key',
