@@ -1,13 +1,15 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { devUser } from 'helpers/credentials.js'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import path from 'path'
 import { buildConfig } from 'payload'
+import { en } from 'payload/i18n/en'
+import { nl } from 'payload/i18n/nl'
 import { payloadExif } from 'payload-exif'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { devUser } from './helpers/credentials.js'
 import { testEmailAdapter } from './helpers/testEmailAdapter.js'
 import { seed } from './seed.js'
 
@@ -67,6 +69,11 @@ const buildConfigWithMemoryDB = async () => {
     }),
     editor: lexicalEditor(),
     email: testEmailAdapter,
+    i18n: {
+      supportedLanguages: {
+        en, nl
+      }
+    },
     onInit: async (payload) => {
       await seed(payload)
     },
