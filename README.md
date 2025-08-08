@@ -51,4 +51,4 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 If you have questions or need support, open an issue on [GitHub](https://github.com/payloadcms/payload-exif/issues), or find me on the payload [discord](https://discord.com/invite/r6sCXqVk3v).
 
 # Contributors
-<img align="left" src="https://contributors-img.web.app/image?repo=payloadcms/payload"/>
+<img align="left" src="https://contributors-img.web.app/image?repo=patrickroelofs/payload-exif"/>
