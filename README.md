@@ -17,10 +17,11 @@
   export default {
     plugins: [
      exifPlugin({
-      // Required: an array of collections payload-exif should add EXIF data to, requires `upload` to be set to `true`.
+      // Required: an array of collections payload-exif should add EXIF data to, 
+      // requires `upload` to be set to `true`.
       collections: ['media']
 
-      // plugin options here
+      // other plugin options here, the plugin has full typescript support!
      }),
     ],
   };
