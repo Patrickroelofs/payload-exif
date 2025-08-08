@@ -1,10 +1,10 @@
-![Project Title](.github/assets/github-title.png)
+# ![Payload EXIF](.github/assets/github-title.png)
 
-# Introduction
+## Introduction
 
 **Payload EXIF** is a plugin for [Payload CMS](https://payloadcms.com/) that automatically extracts and manages EXIF metadata from uploaded images. This helps you access image details such as camera model, geolocation, and timestamps directly within your Payload collections.
 
-# Quick-start
+## Quick-start
 
 1. **Install the plugin:**
   ```bash
@@ -28,7 +28,7 @@
   ```
 3. **Upload an image** to the chosen collection with an upload field. EXIF data will be extracted and stored automatically.
 
-# Features
+## Features
 
 - Extracts EXIF metadata from uploaded images
 - Stores EXIF data in a configurable field
@@ -36,7 +36,7 @@
 - Easy integration with existing Payload projects
 - Optionally allows editing of EXIF data (Coming soon)
 
-# Contributing
+## Contributing
 
 Contributions are welcome! To get started:
 
@@ -47,9 +47,9 @@ Contributions are welcome! To get started:
 
 Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
-# Need Help?
+## Need Help?
 
 If you have questions or need support, open an issue on [GitHub](https://github.com/payloadcms/payload-exif/issues), or find me on the Payload [discord](https://discord.com/invite/r6sCXqVk3v).
 
-# Contributors
+## Contributors
 <img align="left" src="https://contributors-img.web.app/image?repo=patrickroelofs/payload-exif"/>
