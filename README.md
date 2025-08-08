@@ -34,6 +34,7 @@
 - Stores EXIF data in a configurable field
 - Supports JPEG, TIFF, and other common formats
 - Easy integration with existing Payload projects
+- Optionally allows editing of EXIF data (Coming soon)
 
 # Contributing
 
@@ -48,7 +49,7 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 # Need Help?
 
-If you have questions or need support, open an issue on [GitHub](https://github.com/payloadcms/payload-exif/issues), or find me on the payload [discord](https://discord.com/invite/r6sCXqVk3v).
+If you have questions or need support, open an issue on [GitHub](https://github.com/payloadcms/payload-exif/issues), or find me on the Payload [discord](https://discord.com/invite/r6sCXqVk3v).
 
 # Contributors
 <img align="left" src="https://contributors-img.web.app/image?repo=patrickroelofs/payload-exif"/>
