@@ -35,6 +35,7 @@
 - Supports JPEG, TIFF, and other common formats
 - Easy integration with existing Payload projects
 - Optionally allows editing of EXIF data (Coming soon)
+- Translations in multiple languages
 
 ## Contributing
 
