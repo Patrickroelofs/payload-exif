@@ -1,7 +1,8 @@
-import type { CollectionSlug, Config } from 'payload'
+import { type CollectionSlug, type Config, deepMergeSimple } from 'payload'
 
 import { defaultFields } from './fields/defaultFields.js'
 import { defaultHooks } from './fields/defaultHooks.js'
+import { translations } from './translations/index.js'
 
 
 export type PayloadExifConfig = {
@@ -60,5 +61,9 @@ export const payloadExif =
 
           return collection;
         }) || [],
+        i18n: {
+          ...config.i18n,
+          translations: deepMergeSimple(translations, config.i18n?.translations ?? {}),
+        }
       }
     }

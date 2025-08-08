@@ -1,17 +1,34 @@
 import type { Field } from "payload"
 
 const sharedTextAdminFields: NonNullable<Extract<Field, { type: "text" }>['admin']> = {
+  components: {
+    Field: {
+      path: "payload-exif/client#CustomTextFieldClient",
+    },
+    Label: {
+      path: "payload-exif/client#CustomTextFieldLabelClient",
+    }
+  },
   position: 'sidebar',
-  readOnly: true,
+  readOnly: true
 }
 
 const defaultFields: Field[] = [
-
   {
     name: "exif",
     type: "group",
     admin: {
-      description: "EXIF data parsed from the image file",
+      components: {
+        Description: {
+          path: "payload-exif/client#CustomGroupFieldDescriptionClient",
+        },
+        Field: {
+          path: "payload-exif/client#CustomGroupFieldClient",
+        },
+        Label: {
+          path: "payload-exif/client#CustomGroupFieldLabelClient",
+        }
+      },
     },
     fields: [
       {

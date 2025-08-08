@@ -1,0 +1,136 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "plugin-payload-exif": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exif": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ApertureValue": {
+              "type": "string"
+            },
+            "ColorSpace": {
+              "type": "string"
+            },
+            "CreateDate": {
+              "type": "string"
+            },
+            "CustomRendered": {
+              "type": "string"
+            },
+            "DateTimeOriginal": {
+              "type": "string"
+            },
+            "ExifImageHeight": {
+              "type": "string"
+            },
+            "ExifImageWidth": {
+              "type": "string"
+            },
+            "ExposureCompensation": {
+              "type": "string"
+            },
+            "ExposureMode": {
+              "type": "string"
+            },
+            "ExposureProgram": {
+              "type": "string"
+            },
+            "ExposureTime": {
+              "type": "string"
+            },
+            "Flash": {
+              "type": "string"
+            },
+            "FNumber": {
+              "type": "string"
+            },
+            "FocalLength": {
+              "type": "string"
+            },
+            "FocalPlaneResolutionUnit": {
+              "type": "string"
+            },
+            "FocalPlaneXResolution": {
+              "type": "string"
+            },
+            "FocalPlaneYResolution": {
+              "type": "string"
+            },
+            "InteropIndex": {
+              "type": "string"
+            },
+            "ISO": {
+              "type": "string"
+            },
+            "Make": {
+              "type": "string"
+            },
+            "MeteringMode": {
+              "type": "string"
+            },
+            "Model": {
+              "type": "string"
+            },
+            "ModifyDate": {
+              "type": "string"
+            },
+            "Orientation": {
+              "type": "string"
+            },
+            "ResolutionUnit": {
+              "type": "string"
+            },
+            "SceneCaptureType": {
+              "type": "string"
+            },
+            "ShutterSpeedValue": {
+              "type": "string"
+            },
+            "Software": {
+              "type": "string"
+            },
+            "SubSecTime": {
+              "type": "string"
+            },
+            "SubSecTimeDigitized": {
+              "type": "string"
+            },
+            "SubSecTimeOriginal": {
+              "type": "string"
+            },
+            "WhiteBalance": {
+              "type": "string"
+            },
+            "XResolution": {
+              "type": "string"
+            },
+            "YCbCrPositioning": {
+              "type": "string"
+            },
+            "YResolution": {
+              "type": "string"
+            }
+          }
+        },
+        "groupDescription": {
+          "type": "string"
+        },
+        "groupTitle": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "plugin-payload-exif"
+  ]
+}
