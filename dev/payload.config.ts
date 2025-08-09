@@ -81,6 +81,12 @@ const buildConfigWithMemoryDB = async () => {
       payloadExif({
         collections: ['media'],
         excludeFields: [],
+        fields: [
+          {
+            name: 'test',
+            type: 'text',
+          }
+        ],
         logging: false
       }),
     ],
