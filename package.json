@@ -1,6 +1,6 @@
 {
   "name": "payload-exif",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Reads and saves EXIF data into your collection.",
   "license": "MIT",
   "type": "module",
