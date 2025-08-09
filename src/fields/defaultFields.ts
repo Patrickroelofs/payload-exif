@@ -55,9 +55,10 @@ const sharedTextAdminFields: NonNullable<Extract<Field, { type: "text" }>['admin
 
 interface DefaultFieldsOptions {
   excludeFields?: EXIFTypesKeys[];
+  fields?: Field[];
 }
 
-const defaultFields = ({ excludeFields }: DefaultFieldsOptions): Field[] => {
+const defaultFields = ({ excludeFields, fields }: DefaultFieldsOptions): Field[] => {
   const filterSet = excludeFields && excludeFields.length > 0 ? new Set(excludeFields) : null
   const filteredNames = filterSet
     ? allExifFieldNames.filter(name => !filterSet.has(name))
@@ -80,13 +81,16 @@ const defaultFields = ({ excludeFields }: DefaultFieldsOptions): Field[] => {
           }
         },
       },
-      fields: filteredNames.map<Field>((name) => ({
-        name,
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      })),
+      fields: [
+        ...filteredNames.map<Field>((name) => ({
+          name,
+          type: "text",
+          admin: {
+            ...sharedTextAdminFields,
+          }
+        })),
+        ...(fields ?? [])
+      ],
     },
   ]
 }
