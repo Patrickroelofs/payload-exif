@@ -1,4 +1,44 @@
 import type { Field } from "payload"
+import type { EXIFTypesKeys } from "src/exports/types.js"
+
+const allExifFieldNames: EXIFTypesKeys[] = [
+  "Make",
+  "Model",
+  "Orientation",
+  "XResolution",
+  "YResolution",
+  "ResolutionUnit",
+  "Software",
+  "ModifyDate",
+  "YCbCrPositioning",
+  // "GPSVersionID", // TODO: Removed for now until fixed
+  "ExposureTime",
+  "FNumber",
+  "ExposureProgram",
+  "ISO",
+  "DateTimeOriginal",
+  "CreateDate",
+  "ShutterSpeedValue",
+  "ApertureValue",
+  "ExposureCompensation",
+  "MeteringMode",
+  "Flash",
+  "FocalLength",
+  "SubSecTime",
+  "SubSecTimeOriginal",
+  "SubSecTimeDigitized",
+  "ColorSpace",
+  "ExifImageWidth",
+  "ExifImageHeight",
+  "FocalPlaneXResolution",
+  "FocalPlaneYResolution",
+  "FocalPlaneResolutionUnit",
+  "CustomRendered",
+  "ExposureMode",
+  "WhiteBalance",
+  "SceneCaptureType",
+  "InteropIndex"
+]
 
 const sharedTextAdminFields: NonNullable<Extract<Field, { type: "text" }>['admin']> = {
   components: {
@@ -13,279 +53,42 @@ const sharedTextAdminFields: NonNullable<Extract<Field, { type: "text" }>['admin
   readOnly: true
 }
 
-const defaultFields: Field[] = [
-  {
-    name: "exif",
-    type: "group",
-    admin: {
-      components: {
-        Description: {
-          path: "payload-exif/client#CustomGroupFieldDescriptionClient",
+interface DefaultFieldsOptions {
+  excludeFields?: EXIFTypesKeys[];
+}
+
+const defaultFields = ({ excludeFields }: DefaultFieldsOptions): Field[] => {
+  const filterSet = excludeFields && excludeFields.length > 0 ? new Set(excludeFields) : null
+  const filteredNames = filterSet
+    ? allExifFieldNames.filter(name => !filterSet.has(name))
+    : allExifFieldNames
+
+  return [
+    {
+      name: "exif",
+      type: "group",
+      admin: {
+        components: {
+          Description: {
+            path: "payload-exif/client#CustomGroupFieldDescriptionClient",
+          },
+          Field: {
+            path: "payload-exif/client#CustomGroupFieldClient",
+          },
+          Label: {
+            path: "payload-exif/client#CustomGroupFieldLabelClient",
+          }
         },
-        Field: {
-          path: "payload-exif/client#CustomGroupFieldClient",
-        },
-        Label: {
-          path: "payload-exif/client#CustomGroupFieldLabelClient",
-        }
       },
+      fields: filteredNames.map<Field>((name) => ({
+        name,
+        type: "text",
+        admin: {
+          ...sharedTextAdminFields,
+        }
+      })),
     },
-    fields: [
-      {
-        name: "Make",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "Model",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "Orientation",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "XResolution",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "YResolution",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ResolutionUnit",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "Software",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ModifyDate",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "YCbCrPositioning",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      // TODO: Add GPS field, as currently its parsed as an array
-      // {
-      //   name: "GPSVersionID",
-      //   type: "text",
-      //   admin: {
-      //     ...sharedTextAdminFields,
-      //   }
-      // },
-      {
-        name: "ExposureTime",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "FNumber",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ExposureProgram",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ISO",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "DateTimeOriginal",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "CreateDate",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ShutterSpeedValue",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ApertureValue",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ExposureCompensation",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "MeteringMode",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "Flash",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "FocalLength",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "SubSecTime",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "SubSecTimeOriginal",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "SubSecTimeDigitized",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ColorSpace",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ExifImageWidth",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ExifImageHeight",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "FocalPlaneXResolution",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "FocalPlaneYResolution",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "FocalPlaneResolutionUnit",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "CustomRendered",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "ExposureMode",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "WhiteBalance",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "SceneCaptureType",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      },
-      {
-        name: "InteropIndex",
-        type: "text",
-        admin: {
-          ...sharedTextAdminFields,
-        }
-      }
-    ],
-  },
-]
+  ]
+}
 
 export { defaultFields }

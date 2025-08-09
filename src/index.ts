@@ -1,4 +1,7 @@
+
 import { type CollectionSlug, type Config, deepMergeSimple } from 'payload'
+
+import type { EXIFTypesKeys } from './exports/types.js'
 
 import { defaultFields } from './fields/defaultFields.js'
 import { defaultHooks } from './fields/defaultHooks.js'
@@ -16,6 +19,12 @@ export type PayloadExifConfig = {
    * @defaultValue true
    */
   enabled?: boolean
+  /**
+   * An array of EXIF fields to exclude from the database.
+   *
+   * @defaultValue []
+   */
+  excludeFields?: EXIFTypesKeys[]
   /**
    * Enables or disables logging for the PayloadExif plugin.
    * When set to `true`, additional debug information will be output to the console.
@@ -42,13 +51,14 @@ export const payloadExif =
           const { slug } = collection
           const isEnabledForCollection = pluginConfig?.collections?.includes(slug) ?? false
 
-
           if (isEnabledForCollection) {
             return {
               ...collection,
               fields: [
                 ...(collection.fields || []),
-                ...defaultFields,
+                ...defaultFields({
+                  excludeFields: pluginConfig.excludeFields,
+                }),
               ],
               hooks: {
                 ...(collection.hooks || {}),
